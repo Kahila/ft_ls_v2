@@ -102,5 +102,6 @@ int is_file(int nlinks);
 int nBytes(char *content);
 void folders(struct s_flags flags, char **argv);
 void display(char *files, struct s_flag_l props);
+int count_valid(char **argv, struct s_flags *dirs);
 
 #endif
