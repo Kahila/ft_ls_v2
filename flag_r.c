@@ -27,7 +27,6 @@ char **flag_r(char **inv)
 {
 	int i;
 	int j;
-	char *tmp;
 	char **new;
 
 	i = 0;

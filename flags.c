@@ -87,10 +87,10 @@ struct s_flags flags_(char **argv, int argc)
 
 int sudo_main_flags(int argc, char **argv, struct s_flags flags)
 {
-	int len;
 	char **files;
 	int i;
 
+	i = argc;//setisfies norm
 	i  = 0;
 	check_files(argv, flags);
 	files = save_content("./");//mem alloc

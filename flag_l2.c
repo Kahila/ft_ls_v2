@@ -56,6 +56,7 @@ struct s_flag_l flag_l(char *file, char *dir)
 //method used to display the properties
 void display(char *files, struct s_flag_l props)
 {
+	files = NULL;
 	ft_putstr(props.permits);
 	free(props.permits);//mem free
 	ft_putchar('\t');
