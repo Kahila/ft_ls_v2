@@ -18,7 +18,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = check_valid.c flag_l.c flag_r.c folders.c main.c sort_passed.c flag_R_.c	flag_l2.c flag_t.c ft_ls.h save_content.c check_files.c flag_a.c flag_l3.c	flags.c	sizes.c
+SRCS = check_valid.c flag_l.c flag_r.c folders.c main.c sort_passed.c flag_R_.c	flag_l2.c flag_t.c save_content.c check_files.c flag_a.c flag_l3.c	flags.c	sizes.c
 
 OBJS = $(SRCS:.c=.o)
 
