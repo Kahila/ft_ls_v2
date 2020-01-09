@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akalombo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 11:54:22 by akalombo          #+#    #+#             */
+/*   Updated: 2020/01/09 11:54:26 by akalombo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LS_H
 #define FT_LS_H
 
@@ -25,38 +37,38 @@
 
 enum statusCodes
 {
-    INVALID_FLAG = -1,
-    SUCCESS,
-    VALID_FLAG,
-    IS_FILE,
-    IS_FOLDER,
-    FAILED,
-    FAILED_TO_READ_FILE_INFO
+	INVALID_FLAG = -1,
+	SUCCESS,
+	VALID_FLAG,
+	IS_FILE,
+	IS_FOLDER,
+	FAILED,
+	FAILED_TO_READ_FILE_INFO
 };
 
 typedef struct s_flag_l
 {
-    int nLinks;
-    int dirORfile;
-    int sLink;
-    int nBytes;
-    char *last_modified;
-    char *user;
-    char *group;
-    char *fileName;
-    char *permits;
+	int nLinks;
+	int dirORfile;
+	int sLink;
+	int nBytes;
+	char *last_modified;
+	char *user;
+	char *group;
+	char *fileName;
+	char *permits;
 } t_flag_l;
 
 typedef struct s_flags
 {
-    int l;
-    int a;
-    int r;
-    int t;
-    int R;
-    int invalid;
-    int valid;
-    int dir_start;
+	int l;
+	int a;
+	int r;
+	int t;
+	int R;
+	int invalid;
+	int valid;
+	int dir_start;
 } t_flags;
 
 #include "stdio.h"//must go
@@ -79,7 +91,7 @@ struct s_flags flags_help(char *argv, struct s_flags flags);
 int count_invalid(char **argv, struct s_flags *dirs);
 struct s_flags flags_(char **argv, int argc);
 //method for the basic ls function
- struct s_flags sudo_main_basic(int argc, char **argv);
+struct s_flags sudo_main_basic(int argc, char **argv);
 void basic_ls_(char** files, struct s_flags flags);
 void basic_ls(int argc);
 int check_main(char *file);

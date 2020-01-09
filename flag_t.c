@@ -1,39 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag_t.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akalombo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 11:52:32 by akalombo          #+#    #+#             */
+/*   Updated: 2020/01/09 11:52:40 by akalombo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 //method that will be used to get the date the file was last modified
 int    l_mod(char *content)
 {
-    time_t month_mod;
-    int i;
+	time_t month_mod;
+	int i;
 
-    struct stat buff;
-    i = stat(content, &buff);
-    month_mod = buff.st_mtime;
-    return (month_mod);
+	struct stat buff;
+	i = stat(content, &buff);
+	month_mod = buff.st_mtime;
+	return (month_mod);
 }
 
 //method that is used to sort the files by last modified
 char **flag_t(char **inv)
 {
-    int i;
-    int j;
-    char *tmp;
+	int i;
+	int j;
+	char *tmp;
 
-    i = 0;
-    while (inv[i])
-    {
-        j = 0;
-        while (inv[j])
-        {
-            if (l_mod(inv[i]) > l_mod(inv[j]) && l_mod(inv[i]) != l_mod(inv[j]))
-            {
-                tmp = inv[j];
-                inv[j] = inv[i];
-                inv[i] = tmp;
-            }
-            j++;
-        }
-        i++;
-    }
-    return (inv);
+	i = 0;
+	while (inv[i])
+	{
+		j = 0;
+		while (inv[j])
+		{
+			if (l_mod(inv[i]) > l_mod(inv[j]) && l_mod(inv[i]) != l_mod(inv[j]))
+			{
+				tmp = inv[j];
+				inv[j] = inv[i];
+				inv[i] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (inv);
 }

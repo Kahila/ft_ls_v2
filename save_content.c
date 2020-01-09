@@ -1,45 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   save_content.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akalombo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 11:53:58 by akalombo          #+#    #+#             */
+/*   Updated: 2020/01/09 11:54:05 by akalombo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 //method that will be used to count the amount of files to be allocted
 int count_content(char *dir)
 {
-    int i;
-    DIR *mydir;
-    struct dirent *files;
+	int i;
+	DIR *mydir;
+	struct dirent *files;
 
-    i = 0;
-    mydir = opendir(dir);//mem alloc
-    if (mydir)
-    {
-        while((files = readdir(mydir)))
-            i++;
-        closedir(mydir);//mem free
-    }
-    return (i);
+	i = 0;
+	mydir = opendir(dir);//mem alloc
+	if (mydir)
+	{
+		while((files = readdir(mydir)))
+			i++;
+		closedir(mydir);//mem free
+	}
+	return (i);
 }
 
 //method that will be used to store all the files in a specific dir
 char **save_content(char *dir)
 {
-    char **files;
-    DIR *mydir;
-    struct dirent *file;
-    int i;
-    int size;
+	char **files;
+	DIR *mydir;
+	struct dirent *file;
+	int i;
+	int size;
 
-    i = 0;
-    size = count_content(dir);
-    if (size == 0)
-        return (NULL);
-    files = (char **)malloc(sizeof(char*)*(size+1));
-    files[size] = NULL;
-    mydir = opendir(dir);
-    while ((file = readdir(mydir)) && size)
-    {
-        files[i] = ft_strcpy(ft_strnew(ft_strlen(file->d_name)), file->d_name);
-        i++;
-        size--;
-    }
-    closedir(mydir);//mem free
-    return (sort_(files));
+	i = 0;
+	size = count_content(dir);
+	if (size == 0)
+		return (NULL);
+	files = (char **)malloc(sizeof(char*)*(size+1));
+	files[size] = NULL;
+	mydir = opendir(dir);
+	while ((file = readdir(mydir)) && size)
+	{
+		files[i] = ft_strcpy(ft_strnew(ft_strlen(file->d_name)), file->d_name);
+		i++;
+		size--;
+	}
+	closedir(mydir);//mem free
+	return (sort_(files));
 }
